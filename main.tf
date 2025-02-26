@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_lambda_function" "my_lambda" {
   function_name = "my-python-lambda"
-  role          = aws_iam_role.lambda_exec.arn
+  role          = aws_iam_role.lambda_role.arn
   package_type  = "Image"
   image_uri     = "703671922793.dkr.ecr.us-east-1.amazonaws.com/test:latest"
   memory_size   = 128
