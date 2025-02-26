@@ -1,5 +1,7 @@
 provider "aws" {
   region = "us-east-1"
+
+
 }
 
 resource "aws_lambda_function" "my_lambda" {
@@ -11,7 +13,12 @@ resource "aws_lambda_function" "my_lambda" {
 
 resource "aws_ecr_repository" "my_repo" {
   name = "my-python-app"
+
+  lifecycle {
+    ignore_changes = [image_tag_mutability]
+  }
 }
+
 
 resource "aws_iam_role" "lambda_exec" {
   name = "lambda-exec-role"
