@@ -6,10 +6,18 @@ provider "aws" {
 
 resource "aws_lambda_function" "my_lambda" {
   function_name = "my-python-lambda"
-  image_uri     = "${aws_ecr_repository.my_repo.repository_url}:latest"
   role          = aws_iam_role.lambda_exec.arn
   package_type  = "Image"
+  image_uri     = "703671922793.dkr.ecr.us-east-1.amazonaws.com/my-python-app:latest"
+  memory_size   = 128
+  timeout       = 3
+
+  tracing_config {
+    mode = "Active"
+  }
 }
+
+
 
 
 
