@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_lambda_function" "my_lambda" {
   function_name = "my-python-lambda"
-  role          = aws_iam_role.lambda_role.arn
+  role          = aws_iam_role.lambda_rol.arn
   package_type  = "Image"
   image_uri     = "703671922793.dkr.ecr.us-east-1.amazonaws.com/test:latest"
   memory_size   = 128
@@ -21,8 +21,8 @@ resource "aws_lambda_function" "my_lambda" {
 
 
 
-resource "aws_iam_role" "lambda_role" {
-  name = "lambda-role"
+resource "aws_iam_role" "lambda_rol" {
+  name = "lambda-rol"
 
   assume_role_policy = <<EOF
 {
